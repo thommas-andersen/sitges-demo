@@ -1,0 +1,80 @@
+table 'melkebaren Beers'
+	lineageTag: 0228f308-3caf-4d3f-b776-b0c4138e6857
+
+	column name
+		dataType: string
+		lineageTag: 8ca42c86-4762-4bb1-a87e-29d6b75335c7
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 2ff1b8a5-5fd5-4c5d-9718-786d82062e0c
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column size
+		dataType: double
+		lineageTag: 0d5fbc27-5955-4ed9-996d-f81988e6a16e
+		summarizeBy: sum
+		sourceColumn: size
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column percent
+		dataType: double
+		lineageTag: f8d55463-c4d2-42fd-b98a-211a964a92ed
+		summarizeBy: sum
+		sourceColumn: percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column price
+		dataType: int64
+		formatString: 0
+		lineageTag: c79b87ad-976b-400a-9703-378c6044bc19
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+	column inventory
+		dataType: int64
+		formatString: 0
+		lineageTag: e5fe6607-6084-4d07-b661-c5319deb2061
+		summarizeBy: sum
+		sourceColumn: inventory
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 26ecc4cc-6590-4982-9d10-9d170363f9ca
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'melkebaren Beers' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("fraktal.database.windows.net"),
+				    dm_Shared = Source{[Name="dm_Shared"]}[Data],
+				    melkebaren_Beers = dm_Shared{[Schema="melkebaren",Item="Beers"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(melkebaren_Beers,{"name", "type", "size", "percent", "price", "inventory", "country"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

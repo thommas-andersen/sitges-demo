@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "semantisk-modell-demo-sitges"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "34ff8b76-d22c-484f-b795-ff98dc7f09cb"
+  }
+}
