@@ -1,6 +1,17 @@
 table 'melkebaren Beers'
 	lineageTag: 0228f308-3caf-4d3f-b776-b0c4138e6857
 
+	measure 'Percent average' =
+			
+			
+			var _calculate = AVERAGEA('melkebaren Beers'[percent])
+			var _result = _calculate
+			
+			return _result
+		lineageTag: 2183d939-937b-4202-8d2f-a918a16e9637
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column name
 		dataType: string
 		lineageTag: 8ca42c86-4762-4bb1-a87e-29d6b75335c7
