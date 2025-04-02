@@ -1,6 +1,16 @@
 table 'melkebaren Beers'
 	lineageTag: 0228f308-3caf-4d3f-b776-b0c4138e6857
 
+	measure 'Beers count' =
+			
+			
+			var _count = DISTINCTCOUNTNOBLANK('melkebaren Beers'[name])
+			var _result = _count
+			
+			return _result
+		formatString: 0
+		lineageTag: 403d5e21-d3e8-417b-8900-e882260c39b7
+
 	column name
 		dataType: string
 		lineageTag: 8ca42c86-4762-4bb1-a87e-29d6b75335c7
